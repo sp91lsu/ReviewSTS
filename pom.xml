@@ -117,6 +117,18 @@
             <version>4.7</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>jakarta.validation</groupId>
+            <artifactId>jakarta.validation-api</artifactId>
+            <version>2.0.2</version>
+        </dependency>
+        <!-- 폼 데이터 검증 -->
+        <dependency>
+            <groupId>org.hibernate.validator</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>6.0.18.Final</version>
+        </dependency>
+
     </dependencies>
     <build>
         <plugins>
