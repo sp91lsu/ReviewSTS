@@ -1,8 +1,9 @@
 package com.lec.sts;
 
-import com.command.write.*;
-import com.lec.beans.BWriteDTO;
+import com.lec.sts.command.write.*;
+import com.lec.sts.beans.BWriteDTO;
 import common.C;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -16,7 +17,15 @@ public class BoardController {
 	
 	private BCommand command;
 	private JdbcTemplate template;
-	
+	// MyBatis
+	private SqlSession sqlSession;
+
+	@Autowired
+	public void setSqlSession(SqlSession sqlSession) {
+		this.sqlSession = sqlSession;
+		C.sqlSession = sqlSession;
+	}
+
 	@Autowired	
 	public void setTemplate(JdbcTemplate template) {
 		System.out.println("setTemplate() 호출");

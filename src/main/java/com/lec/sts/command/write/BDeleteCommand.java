@@ -1,6 +1,6 @@
-package com.command.write;
+package com.lec.sts.command.write;
 
-import com.lec.beans.BWriteDAO;
+import com.lec.sts.beans.BWriteDAO;
 import org.springframework.ui.Model;
 
 import java.util.Map;

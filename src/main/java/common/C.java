@@ -1,10 +1,13 @@
 package common;
 
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 public class C {
 	public static JdbcTemplate template;
-	
+
+	public static SqlSession sqlSession;
+
 	// 게시글 관련 쿼리문
 	public static final String SQL_WRITE_INSERT = 
 			"INSERT INTO test_write"

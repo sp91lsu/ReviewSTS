@@ -1,7 +1,7 @@
-package com.command.write;
+package com.lec.sts.command.write;
 
-import com.lec.beans.BWriteDAO;
-import com.lec.beans.BWriteDTO;
+import com.lec.sts.beans.BWriteDAO;
+import com.lec.sts.beans.BWriteDTO;
 import org.springframework.ui.Model;
 
 public class BWriteCommand implements BCommand {

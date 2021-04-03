@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lec.sts.beans.IWriteDAO">
+    <select id="select" resultType="com.lec.sts.beans.BWriteDTO">
+        SELECT wr_id id, wr_subject subject, wr_content content, wr_name name,
+               wr_viewcnt viewcnt, wr_regdate regDate FROM test_write ORDER BY wr_id DESC
+    </select>
+
+
+</mapper>
+
+

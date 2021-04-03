@@ -1,4 +1,4 @@
-package com.lec.beans;
+package com.lec.sts.beans;
 
 import common.C;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -20,14 +20,14 @@ public class BWriteDAO {
 	}
 	
 	// 전체 SELECT
-	public List<com.lec.beans.BWriteDTO> select(){
+	public List<com.lec.sts.beans.BWriteDTO> select(){
 		return template.query(C.SQL_WRITE_SELECT, 
-				new BeanPropertyRowMapper<com.lec.beans.BWriteDTO>(com.lec.beans.BWriteDTO.class)
+				new BeanPropertyRowMapper<com.lec.sts.beans.BWriteDTO>(com.lec.sts.beans.BWriteDTO.class)
 				);
 	}
 	
 	// 새 글 작성 (INSERT)
-	public int insert(com.lec.beans.BWriteDTO dto) {
+	public int insert(com.lec.sts.beans.BWriteDTO dto) {
 		
 		// 1. update() + PreparedStatementSetter() 사용
 //		return
@@ -58,7 +58,7 @@ public class BWriteDAO {
 		
 	}
 
-	public List<com.lec.beans.BWriteDTO> readByUid(int uid) {
+	public List<com.lec.sts.beans.BWriteDTO> readByUid(int uid) {
 		//BWriteDTO dto = null;
 		
 		// 조회수 증가
@@ -72,33 +72,33 @@ public class BWriteDAO {
 		
 		
 		// uid 의 글 읽기
-		List<com.lec.beans.BWriteDTO> list =
+		List<com.lec.sts.beans.BWriteDTO> list =
 		this.template.query(C.SQL_WRITE_SELECT_BY_UID, new PreparedStatementSetter() {
 			
 			@Override
 			public void setValues(PreparedStatement ps) throws SQLException {
 				ps.setInt(1, uid);				
 			}
-		}, new BeanPropertyRowMapper<com.lec.beans.BWriteDTO>(com.lec.beans.BWriteDTO.class));
+		}, new BeanPropertyRowMapper<com.lec.sts.beans.BWriteDTO>(com.lec.sts.beans.BWriteDTO.class));
 		
 		return list;
 	}
 
-	public List<com.lec.beans.BWriteDTO> selectByUid(int uid) {
+	public List<com.lec.sts.beans.BWriteDTO> selectByUid(int uid) {
 		
-		List<com.lec.beans.BWriteDTO> list =
+		List<com.lec.sts.beans.BWriteDTO> list =
 				template.query(C.SQL_WRITE_SELECT_BY_UID, new PreparedStatementSetter() {
 					
 					@Override
 					public void setValues(PreparedStatement ps) throws SQLException {
 						ps.setInt(1, uid);						
 					}
-				}, new BeanPropertyRowMapper<com.lec.beans.BWriteDTO>(com.lec.beans.BWriteDTO.class));
+				}, new BeanPropertyRowMapper<com.lec.sts.beans.BWriteDTO>(com.lec.sts.beans.BWriteDTO.class));
 		
 		return list;
 	}
 
-	public int update(com.lec.beans.BWriteDTO dto) {
+	public int update(com.lec.sts.beans.BWriteDTO dto) {
 		int cnt = 0;
 		
 		cnt =

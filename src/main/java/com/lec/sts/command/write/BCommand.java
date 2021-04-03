@@ -1,4 +1,4 @@
-package com.command.write;
+package com.lec.sts.command.write;
 
 import org.springframework.ui.Model;
 

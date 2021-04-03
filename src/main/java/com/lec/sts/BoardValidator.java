@@ -1,6 +1,6 @@
 package com.lec.sts;
 
-import com.lec.beans.WriteDTO;
+import com.lec.sts.beans.WriteDTO;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
