@@ -1,4 +1,4 @@
-package com.study.sts;
+package com.lec.sts;
 
 import java.text.DateFormat;
 import java.util.Date;
