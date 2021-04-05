@@ -1,11 +1,10 @@
 package com.lec.sts;
 
-import com.lec.sts.command.write.*;
 import com.lec.sts.beans.BWriteDTO;
+import com.lec.sts.command.write.*;
 import common.C;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +13,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
-	
-	private BCommand command;
-	private JdbcTemplate template;
 	// MyBatis
 	private SqlSession sqlSession;
 
@@ -26,17 +22,9 @@ public class BoardController {
 		C.sqlSession = sqlSession;
 	}
 
-	@Autowired	
-	public void setTemplate(JdbcTemplate template) {
-		System.out.println("setTemplate() 호출");
-		this.template = template;
-		C.template = template;
-	}
-	
 	@RequestMapping("/list.do")
 	public String list(Model model) {
-		command = new BListCommand();
-		command.execute(model);		
+		new BListCommand().execute(model);
 		return "board/list";
 	}
 	
@@ -69,9 +57,7 @@ public class BoardController {
 	@RequestMapping(value="/updateOk.do", method= RequestMethod.POST)
 	public String updateOk(BWriteDTO dto, Model model) {
 		model.addAttribute("dto", dto);
-		
 		new BUpdateCommand().execute(model);
-		
 		return "board/updateOk";
 	}
 	

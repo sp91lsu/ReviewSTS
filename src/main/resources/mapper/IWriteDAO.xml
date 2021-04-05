@@ -5,10 +5,60 @@
 
 <mapper namespace="com.lec.sts.beans.IWriteDAO">
     <select id="select" resultType="com.lec.sts.beans.BWriteDTO">
-        SELECT wr_id id, wr_subject subject, wr_content content, wr_name name,
-               wr_viewcnt viewcnt, wr_regdate regDate FROM test_write ORDER BY wr_id DESC
+        SELECT
+               wr_uid "uid",
+               wr_name name,
+               wr_subject subject,
+               wr_content content,
+               wr_viewcnt viewcnt,
+               wr_regdate regDate
+        FROM test_write
+        ORDER BY wr_uid DESC
     </select>
 
+    <!-- view.do -->
+    <select id="selectByUid" resultType="com.lec.sts.beans.BWriteDTO">
+        SELECT
+            wr_uid "uid", wr_subject subject, wr_content content, wr_name name,
+            wr_viewcnt viewcnt, wr_regdate regdate
+        FROM test_write
+        WHERE wr_uid=#{uid}
+    </select>
+
+    <!-- 조회수 증가 -->
+    <update id="incViewCnt" flushCache="true">
+        UPDATE test_write
+        SET wr_viewcnt = wr_viewcnt + 1
+        WHERE wr_uid = #{param1}
+    </update>
+
+    <!-- updateOk.do -->
+    <!--
+    <update id="update" flushCache="true"
+        parameterType="com.lec.beans.BWriteDTO">
+        UPDATE test_write
+        SET wr_subject = #{subject}, wr_content = #{content}
+        WHERE wr_uid = #{uid}
+    </update>
+     -->
+    <update id="update" flushCache="true">
+        UPDATE test_write
+        SET wr_subject = #{a.subject}, wr_content = #{a.content}
+        WHERE wr_uid = #{param1}
+    </update>
+
+    <!-- deleteOk.do -->
+    <delete id="deleteByUid" flushCache="true">
+        DELETE FROM test_write
+        WHERE wr_uid = #{uid}
+    </delete>
+
+
+    <select id="searchBySubject" resultType="com.lec.sts.beans.BWriteDTO">
+		<![CDATA[
+        SELECT * FROM test_write WHERE uid < 10
+        ]]>
+	</select>
 
 </mapper>
 

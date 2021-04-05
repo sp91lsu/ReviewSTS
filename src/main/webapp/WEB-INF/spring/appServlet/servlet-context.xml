@@ -31,10 +31,6 @@
 		<beans:property name="username" value="scott08a"/>
 		<beans:property name="password" value="1234"/>
 	</beans:bean>
-	<!-- JdbcTemplate -->
-	<beans:bean name="template" class="org.springframework.jdbc.core.JdbcTemplate">
-		<beans:property name="dataSource" ref="dataSource"/>
-	</beans:bean>
 
 	<!-- MyBatis 설정 -->
 	<beans:bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -44,6 +40,20 @@
 
 	<beans:bean name="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg index="0" ref="sqlSessionFactory"/>
+	</beans:bean>
+
+	<!-- Transaction -->
+	<beans:bean name="transactionManager"
+				class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<beans:property name="dataSource" ref="dataSource" />
+	</beans:bean>
+	<beans:bean name="transactionTemplate"
+				class="org.springframework.transaction.support.TransactionTemplate">
+		<beans:property name="transactionManager" ref="transactionManager"/>
+	</beans:bean>
+
+	<beans:bean name="ticketService"
+				class="com.lec.sts.ticket.TicketService">
 	</beans:bean>
 
 
