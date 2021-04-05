@@ -56,6 +56,20 @@
 				class="com.lec.sts.ticket.TicketService">
 	</beans:bean>
 
+	<!-- Interceptor 빈(bean) 생성 -->
+	<beans:bean name="loginInterceptor"
+				class="com.lec.sts.LoginInterceptor"/>
+
+	<!-- Interceptor 등록/설정 -->
+	<interceptors>
+		<interceptor>
+<!--			<mapping path="/board/list.do"/>-->
+<!--			<mapping path="/board/write.do"/>-->
+			<mapping path="/board/*.do"/>
+			<exclude-mapping path="/board/list.do"/>
+			<beans:ref bean="loginInterceptor"/>
+		</interceptor>
+	</interceptors>
 
 
 </beans:beans>
