@@ -1,5 +1,7 @@
 package com.lec.sts.beans;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.sql.Timestamp;
 
 // DTO : Data Transfer Object
@@ -8,9 +10,11 @@ public class BWriteDTO {
 	private String subject;  // wr_subject
 	private String content;  // wr_content
 	private String name;   // wr_name
+	@JsonProperty("viewcnt")
 	private int viewCnt;   // wr_viewcnt
+	@JsonProperty("regdate")
 	private Timestamp regDate;   // wr_regdate
-	
+
 	
 	// 웹개발시..
 	// 가능한, 다음의 3가지 이름을 일치시켜 주는게 좋습니다.
@@ -34,6 +38,15 @@ public class BWriteDTO {
 //				uid, subject, content, name, viewCnt);
 	}
 
+	public BWriteDTO(int uid, String subject, String content, String name, int viewCnt, Timestamp regDate) {
+		super();
+		this.uid = uid;
+		this.subject = subject;
+		this.content = content;
+		this.name = name;
+		this.viewCnt = viewCnt;
+		this.regDate = regDate;
+	}
 	// getter & setter
 	public int getUid() {
 //		System.out.println("getUid() 호출");
