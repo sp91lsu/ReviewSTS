@@ -23,15 +23,6 @@
 
 	<context:component-scan base-package="com.lec.sts" />
 
-	<!-- spring-jdbc 빈 객체 생성 -->
-	<!-- DataSource 객체 -->
-	<beans:bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<beans:property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
-		<beans:property name="username" value="scott08a"/>
-		<beans:property name="password" value="1234"/>
-	</beans:bean>
-
 	<!-- MyBatis 설정 -->
 	<beans:bean name="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource"/>
