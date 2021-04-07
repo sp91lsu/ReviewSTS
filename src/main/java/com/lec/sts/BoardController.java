@@ -67,8 +67,10 @@ public class BoardController {
 		new BDeleteCommand().execute(model);
 		return "board/deleteOk";
 	}
-	
-	
+
+	// REST 게시판 작성 연습
+	@RequestMapping("/rest")
+	public void rest() {}   //   /board/rest.jsp
 }
 
 
